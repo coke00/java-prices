@@ -1,0 +1,171 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API prueba técnica",
+    "description": "Proyecto enfocado en realizar pruebas de codificación.",
+    "termsOfService": "https://www.linkedin.com/in/jorge-iraira-ab099476/terms",
+    "contact": {
+      "name": "Jorge Iraira",
+      "url": "https://www.linkedin.com/in/jorge-iraira-ab099476/",
+      "email": "jorgeiraira55@gmail.com"
+    },
+    "license": {
+      "name": "License of API",
+      "url": "https://www.linkedin.com/in/jorge-iraira-ab099476/license"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local server"
+    },
+    {
+      "url": "https://xx.qa.midominio.com",
+      "description": "QA server"
+    },
+    {
+      "url": "https://xx.staging.midominio.com",
+      "description": "Staging server"
+    },
+    {
+      "url": "https://xx.produccion.com",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Price",
+      "description": "Operations related to prices"
+    }
+  ],
+  "paths": {
+    "/prices": {
+      "get": {
+        "tags": [
+          "Price"
+        ],
+        "summary": "Get price",
+        "description": "Get price by some filters",
+        "operationId": "getPrice",
+        "parameters": [
+          {
+            "name": "applicationDate",
+            "in": "query",
+            "description": "The date and time of the application",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2020-06-14T19:00:59"
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "description": "The ID of the product",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 35455
+          },
+          {
+            "name": "brandId",
+            "in": "query",
+            "description": "The ID of the brand",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Parameter is missing",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Price not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Correcta obtención de price",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "PriceResponse": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brandId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "priceList": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "price": {
+            "type": "number"
+          },
+          "curr": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
