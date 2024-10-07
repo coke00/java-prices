@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+environment:
+  datasource:
+    url: "jdbc:h2:mem:./pruebaTest;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    username: "sa"
+    password: ""
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: on
+  flyway:
+    enabled: false
