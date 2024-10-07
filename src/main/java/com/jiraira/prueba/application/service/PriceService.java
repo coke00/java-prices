@@ -21,12 +21,10 @@ public class PriceService implements GetPriceUseCase {
     @Override
     public Price findApplicablePrice(Integer productId, Integer brandId, LocalDateTime applicationDate) throws PriceNotFoundException {
 
-        Price price = priceOutputPort.findPriceApplicableByProductIdBrandIdAndDate(productId, brandId, applicationDate)
+        return priceOutputPort.findPriceApplicableByProductIdBrandIdAndDate(productId, brandId, applicationDate)
                 .stream()
                 .max(Comparator.comparing(Price::getPriority))
                 .orElseThrow(() -> new PriceNotFoundException(String.format(Constants.PRICE_NOT_FOUND_FORMAT, productId, brandId, applicationDate)));
-
-        return price;
     }
 
 }

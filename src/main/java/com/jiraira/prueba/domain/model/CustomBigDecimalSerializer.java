@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 public class CustomBigDecimalSerializer extends JsonSerializer<BigDecimal> {
     @Override
-    public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers) throws IOException, IOException {
+    public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         gen.writeString(String.format("%.2f", value));
     }
 }

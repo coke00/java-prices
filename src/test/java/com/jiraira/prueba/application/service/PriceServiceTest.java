@@ -150,7 +150,7 @@ class PriceServiceTest {
     }
 
     private static Price getPriceMock() {
-        Price expectedPrice = Price.builder()
+        return Price.builder()
                 .brandId(1)
                 .startDate(LocalDateTime.parse("2020-06-13T00:00:00"))
                 .endDate(LocalDateTime.parse("2020-12-31T23:59:59"))
@@ -159,7 +159,6 @@ class PriceServiceTest {
                 .price(new BigDecimal("30.50"))
                 .curr("EUR")
                 .build();
-        return expectedPrice;
     }
 
     private static List<Price> getPricesMocks() {

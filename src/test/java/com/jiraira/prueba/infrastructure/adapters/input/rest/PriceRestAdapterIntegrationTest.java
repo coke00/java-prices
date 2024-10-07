@@ -84,7 +84,7 @@ public class PriceRestAdapterIntegrationTest {
 
     @Test
     void test2() throws Exception {
-        LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 16, 00, 00);
+        LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 16, 0, 0);
         int productId = 35455;
         int brandId = 1;
 

@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 public class PriceRestAdapter {
 
     private final GetPriceUseCase getPriceUseCase;
-    private PriceRestMapper priceRestMapper;
+    private final PriceRestMapper priceRestMapper;
 
     public PriceRestAdapter(GetPriceUseCase getPriceUseCase, PriceRestMapper priceRestMapper) {
         this.getPriceUseCase = getPriceUseCase;

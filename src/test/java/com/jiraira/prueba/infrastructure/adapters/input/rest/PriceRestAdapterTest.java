@@ -83,8 +83,6 @@ class PriceRestAdapterTest {
 
         when(priceService.findApplicablePrice(productId, brandId, applicationDate)).thenThrow(new PriceNotFoundException("Price not found"));
 
-        assertThrows(PriceNotFoundException.class, () -> {
-            priceRestAdapter.getPrice(applicationDate, productId, brandId);
-        }, "Debería lanzar PriceNotFoundException");
+        assertThrows(PriceNotFoundException.class, () -> priceRestAdapter.getPrice(applicationDate, productId, brandId), "Debería lanzar PriceNotFoundException");
     }
 }
